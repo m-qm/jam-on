@@ -1,8 +1,8 @@
 # Project Name
-
+Jam-On
 ## Description
 
-Jam-on is an app that connects musicians that share common interests and styles to jam together
+Jam-On is an app that connects musicians that share common interests and styles to jam together
 
 ## User Stories
 
@@ -43,13 +43,12 @@ Homepage
 - GET / 
   - renders the homepage
 - GET /auth/signup
-  - redirects to / if user logged in
+  - redirects to / if user logged in 
   - renders the signup form (with flash msg)
 - POST /auth/signup
-  - redirects to / if user logged in
+  - redirects to / if user logged in / not 2 fields 
   - body:
     - username
-    - email
     - password
 - GET /auth/login
   - redirects to / if user logged in
@@ -59,26 +58,48 @@ Homepage
   - body:
     - username
     - password
-- POST /auth/logout
-  - body: (empty)
-
-- GET /events
-  - renders the event list + the create form
-- POST /events/create 
-  - redirects to / if user is anonymous
+- GET /jams
+  - renders the jams list + the create form
+  - add button attend
+- POST /jams/:id/attend
+  - render jams list
+  - body: :id 
+- GET /jams/create
+  - render form
+- POST /jams/create 
+  - redirect jams // 
   - body: 
     - name
     - date
     - city
     - description
-    - style
-- GET /events/:id
-  - renders the event detail page
-  - includes the list of attendees
-  - attend button if user not attending yet
-- POST /events/:id/attend 
-  - redirects to / if user is anonymous
-  - body: (empty - the user is already stored in the session)
+    - instruments
+    - styles
+- GET /jams/:id 
+  - renders the event detail jam
+  - includes the number of attendees
+  -if user it attend->delete button if user not attending anymore
+- POST /jams/:id/profile/:id
+  - renders to profile user/jams
+  - body (user :id, jams :id)
+- GET /profile
+    - renders the profile user + my jams 
+- GET profile/:id/edit 
+    - redirect to /profile/:id
+- POST profile/:id/edit 
+    - redirect to /profile/:id
+    - body: 
+      -name
+      -city
+      -instruments
+      -styles
+      -about
+      -email
+      -playlist
+- GET profile/:id/jams/:id
+    - redirect to /jams/:id
+- GET 
+- 
 
 
 ## Models
@@ -90,7 +111,8 @@ username: String
 password: String
 email: String
 city: String
-style: {Array}
+instruments: Enum {Array}
+styles: Enum{Array}
 about: String
 playlist: String
 
@@ -101,10 +123,11 @@ Jam model
 ```
 owner: ObjectId<User>
 name: String
+date: Date
 city: String
 description: String
 style: {Array}
-date: Date
+
 attendees: [ObjectId<User>]
 ``` 
 
