@@ -15,6 +15,8 @@ Jam-On is an app that connects musicians that share common interests and styles 
 - **events create** - As a user I want to create an event so that I can invite others to attend
 - **events detail** - As a user I want to see the event details and attendee list of one event so that I can decide if I want to attend 
 - **event attend** - As a user I want to be able to attend to event so that the organizers can count me in
+- **event unattend** - As a user I want to able to unattend to event 
+- **see my profile** - As a user I want to see my profile and my jams
 - **profile edit** - As a user I want to update my preferences and modify the instruments I play
 
 ## Backlog
@@ -22,7 +24,7 @@ Jam-On is an app that connects musicians that share common interests and styles 
 List of other features outside of the MVPs scope
 
 User profile:
-- see my profile
+- 
 - upload my profile picture
 - see other users profile
 - list of events created by the user
@@ -62,7 +64,7 @@ Homepage
   - add button attend
 - POST /jams/:id/attend
   - render jams list
-  - body: :id 
+  - body: 
 - GET /jams/create
   - render form
 - POST /jams/create 
@@ -78,15 +80,12 @@ Homepage
   - renders the event detail jam
   - includes the number of attendees
   -if user it attend->delete button if user not attending anymore
-- POST /jams/:id/profile/:id
-  - renders to profile user/jams
-  - body (user :id, jams :id)
-- GET /profile
+- GET /profile/me
     - renders the profile user + my jams 
-- GET profile/:id/edit 
-    - redirect to /profile/:id
-- POST profile/:id/edit 
-    - redirect to /profile/:id
+- GET profile/me/edit 
+    - redirect to /profile/me
+- POST profile/me/edit 
+    - redirect to /profile/me
     - body: 
       -name
       -city
@@ -95,10 +94,8 @@ Homepage
       -about
       -email
       -playlist
-- GET profile/:id/jams/:id
-    - redirect to /jams/:id
-- GET 
-- 
+
+
 
 
 ## Models
@@ -110,8 +107,8 @@ username: String
 password: String
 email: String
 city: String
-instruments: Enum {Array}
-styles: Enum{Array}
+instruments: String
+styles: String
 about: String
 playlist: String
 
@@ -125,8 +122,7 @@ name: String
 date: Date
 city: String
 description: String
-style: {Array}
-
+style: String
 attendees: [ObjectId<User>]
 ``` 
 
