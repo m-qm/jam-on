@@ -15,8 +15,8 @@ Jam-On is an app that connects musicians that share common interests and styles 
 - **events create** - As a user I want to create an event so that I can invite others to attend
 - **events detail** - As a user I want to see the event details and attendee list of one event so that I can decide if I want to attend 
 - **event attend** - As a user I want to be able to attend to event so that the organizers can count me in
-- **event unattend** - As a user I want to able to unattend to event 
-- **see my profile** - As a user I want to see my profile and my jams
+- **event unattend** - As a user I want to able to unattend to event so that I let the organizers know that I won´t participate in the event
+- **see my profile** - As a user I want to see my profile and my jams so that I can see my details and the events I want to attend
 - **profile edit** - As a user I want to update my preferences and modify the instruments I play
 
 ## Backlog
