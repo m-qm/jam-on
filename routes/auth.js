@@ -13,12 +13,17 @@ router.get('/signup', (req, res, next) => {
 router.post('/signup', (req, res, next) => {
   const newUser = req.body;
   if (!newUser.username || !newUser.password) {
-    res.redirect('signup');
+    // console.log('usuario o contraseña esta en blanco');
+    req.flash('error', 'Username or password cannot be empty');
+    return res.redirect('signup');
+    // res.redirect('signup');
   }
   User.findOne({ username: newUser.username })
     .then((user) => {
       if (user) {
-        res.render('signup');
+        console.log('usuario existe');
+        req.flash('error', 'Username already taken');
+        return res.redirect('signup');
       } else {
         const salt = bcrypt.genSaltSync(saltRounds);
         const hashedPassword = bcrypt.hashSync(newUser.password, salt);
@@ -28,8 +33,8 @@ router.post('/signup', (req, res, next) => {
         };
         User.create(registerUser)
           .then(() => {
-            console.log('create', user);
-            res.redirect('/profile'); // cambiar nombre de ruta y vista
+            req.flash('success', 'Correct Signup');
+            return res.redirect('/profile'); // cambiar nombre de ruta y vista
           })
           .catch(next);
       }
@@ -37,28 +42,29 @@ router.post('/signup', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/login', middlewares.requireAnon, (req, res, next) => {
+router.get('/login', (req, res, next) => {
   res.render('login', { page: 'Login', menuId: 'login' });
 });
 
 router.post('/login', (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password) {
-    res.redirect('login');
+    req.flash('error', 'Username or password cannot be empty');
+    return res.redirect('login');
   }
   User.findOne({ username: username })
     .then((user) => {
       if (!user) {
-        console.log('Invalid user or password');
-        console.log('mensaje 1', user);
+        req.flash('error', 'Username or password are not correct');
         return res.redirect('login');
       } else {
         if (bcrypt.compareSync(password /* provided password */, user.password/* hashed password */)) {
-        // Save the login in the session!
+          // Save the login in the session!
           req.session.currentUser = user;
-          console.log(user);
+          req.flash('success', 'Correct Login');
           return res.redirect('/profile');
         } else {
+          req.flash('error', 'Username or password are not correct');
           res.redirect('/auth/login');
         }
       }

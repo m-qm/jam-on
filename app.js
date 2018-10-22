@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const flash = require('connect-flash');
 const favicon = require('serve-favicon');
 const expressLayouts = require('express-ejs-layouts');
 
@@ -48,14 +49,27 @@ app.use(session({
   }
 }));
 
+// Flash notifications
+app.use(flash());
+
 // Makes the currentUser available in every page
 // note1: currentUser needs to match whatever you use in login/signup/logout routes
 // note2: if using passport, req.user instead
 app.use((req, res, next) => {
   app.locals.currentUser = req.session.currentUser;
+  res.locals.currentUser = req.session.currentUser;
   next();
 });
 
+app.use((req, res, next) => {
+  // We extract the messages separately cause we call req.flash() we'll clean the object flash.
+  res.locals.errorMessages = req.flash('error');
+  res.locals.infoMessages = req.flash('info');
+  res.locals.dangerMessages = req.flash('danger');
+  res.locals.successMessages = req.flash('success');
+  res.locals.warningMessages = req.flash('warning');
+  next();
+});
 // view engine setup
 app.use(expressLayouts);
 app.set('views', path.join(__dirname, 'views'));
