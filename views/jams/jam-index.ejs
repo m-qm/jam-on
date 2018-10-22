@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+</head>
+<body>
+<% include partials/menu %>
+
+<div class="container-fluid bg-3 text-center">    
+  <h3><%= page %></h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+
+      <ul id="Jam-list">
+      <%Jam.forEach(result => { %>
+      <article class="Jam-info">
+        <p> <%= result.name %> </p>
+        <a href="/jams/<%= result._id%>">Info</a>
+
+        <form action="jams/<%= result._id%>/delete" method="post">
+          <button>Delete</button>
+        </form>
+        <a href="/jams/<%= result._id%>/edit">Edit</a>
+      <% }) %>
+      </div>
+    </div>
+
+      </article>
+    </ul>
+    <a href="/jams/new">Add a new Jam</a>
+    <a href="/" class="back-link">Go back</a>
+
+    </body>
+<% include partials/script %>
+</html>

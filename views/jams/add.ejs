@@ -1,3 +1,11 @@
+<html lang="en">
+<head>
+ <% include partials/head %> 
+</head>
+<body>
+<% include partials/menu %>
+  <h3 class="text-center"><%= page %></h3><br>
+  <section>
 <form action="/jams/add" method="post">
   <div class="form-container">
     <input type="text" name="name" placeholder="Jams's name">
@@ -10,3 +18,8 @@
   </div>
   <a href="/" class="back-link">Go back</a>
 </form>
+</section>
+
+</body>
+<% include partials/script %>
+</html>

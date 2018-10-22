@@ -1,3 +1,17 @@
+* {
+  font-family: 'Bungee Hairline';
+  font-weight: bold;
+}
+
+html, body, header, #intro {
+  height: 100%; }
+
+ #intro {
+   background-image: url(images/intropic.png) no-repeat center center fixed;
+
+ }
+ 
+ 
 .bg-3 { 
   background-color: #ffffff;
   color: #555555;
@@ -6,7 +20,8 @@
   padding-top: 70px;
   padding-bottom: 70px;
 }
-.navbar {
+.navbar-nav,
+.navbar-nav a {
   padding-top: 15px;
   padding-bottom: 15px;
   border: 0;
@@ -15,9 +30,21 @@
   font-size: 12px;
   letter-spacing: 5px;
 }
+
 .navbar-nav  li a:hover {
-  color: #1abc9c !important;
+  color: royalblue !important;
 }
 .active>a {
 color: #1abc9c !important;;
 }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+a.navbar-brand{
+  font-family: 'Bungee';
+  font-weight: bold;
+}
+
