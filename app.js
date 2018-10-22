@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const favicon = require('serve-favicon');
+const expressLayouts = require('express-ejs-layouts');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -56,8 +57,10 @@ app.use((req, res, next) => {
 });
 
 // view engine setup
+app.use(expressLayouts);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('layout', 'layouts/main');
 
 app.use(logger('dev'));
 app.use(express.json());

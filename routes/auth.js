@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 router.get('/signup', (req, res, next) => {
-  res.render('signup');
+  res.render('signup', { page: 'Sign up', menuId: 'signup' });
 });
 
 router.post('/signup', (req, res, next) => {
@@ -38,7 +38,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', middlewares.requireAnon, (req, res, next) => {
-  res.render('login');
+  res.render('login', { page: 'Login', menuId: 'login' });
 });
 
 router.post('/login', (req, res, next) => {
