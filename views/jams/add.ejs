@@ -1,25 +1,24 @@
-<html lang="en">
-<head>
- <% include partials/head %> 
-</head>
-<body>
-<% include partials/menu %>
-  <h3 class="text-center"><%= page %></h3><br>
   <section>
-<form action="/jams/add" method="post">
-  <div class="form-container">
-    <input type="text" name="name" placeholder="Jams's name">
-    <input type="text" name="city" placeholder="City">
-    <input type="text" name="description" placeholder="Description">
-    <input type="text" name="style" placeholder="Style">
-    <input type="date" name="date" placeholder="date">
+  <form action="/jams/add" method="post">
+  <div class="container-fluid bg-3 text-center">    
 
-    <button>Save Jam</button>
+  <div class="form-container">
+    <label for="name">Title</label>
+    <input type="text" id="name" name="title" placeholder="Title your Jam" class="form-control">
+    <label for="date">Date</label>
+    <input type='date' name="date" class="form-control" id='datetimepicker4' />
+    <label for="city">City</label>
+    <input type="text" name="city" placeholder="City" class="form-control">
+    <label for="description">Description</label>
+    <input type="text" name="description" placeholder="Description" class="form-control">
+    <label for="style">Style</label>
+    <input type="text" name="style" placeholder="Style" class="form-control">
+
+    <button type="submit" class="mt-2 btn btn-block">Submit Jam</button>
+    </div>
   </div>
   <a href="/" class="back-link">Go back</a>
+
 </form>
 </section>
 
-</body>
-<% include partials/script %>
-</html>

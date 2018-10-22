@@ -1,16 +1,19 @@
 * {
+  
+}
+body{
   font-family: 'Bungee Hairline';
   font-weight: bold;
 }
-
 html, body, header, #intro {
-  height: 100%; }
-
- #intro {
+  height: 100%; 
+}
+a{
+  color: #555555;
+}
+.intro {
    background-image: url(images/intropic.png) no-repeat center center fixed;
-
  }
- 
  
 .bg-3 { 
   background-color: #ffffff;
@@ -48,3 +51,7 @@ a.navbar-brand{
   font-weight: bold;
 }
 
+/* Bootstrap */
+.navbar-nav, .navbar-nav a{
+  display: inline-block;
+}
