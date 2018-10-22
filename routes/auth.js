@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const User = require('../models/user');
 const middlewares = require('../middlewares/middlewares');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 router.get('/signup', (req, res, next) => {
-  res.render('signup');
+  res.render('signup', { page: 'Sign up', menuId: 'signup' });
 });
 
 router.post('/signup', (req, res, next) => {
@@ -40,13 +40,13 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('login');
+  res.render('login', { page: 'Login', menuId: 'login' });
 });
 
 router.post('/login', (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password) {
-    return res.redirect('login');
+    return res.render('login', { error: 'Nombre de usuario o contraseña incorrectos' });
   }
   User.findOne({ username: username })
     .then((user) => {
