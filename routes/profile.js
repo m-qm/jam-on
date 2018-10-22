@@ -6,7 +6,8 @@ const middlewares = require('../middlewares/middlewares');
 // const bcrypt = require('bcrypt');
 // const saltRounds = 10;
 
-router.get('/', middlewares.requireAnon, (req, res, next) => {
+router.get('/', middlewares.requireUser, (req, res, next) => {
+  // console.log(req.params.currentUser.name);
   res.render('profile');
 });
 
