@@ -1,14 +1,14 @@
 
 
 <div class="container-fluid bg-3 text-center">
-  <div class="row">
   <h3><%= page %></h3>
   </div>
-  <div class="row">
+  <div class="container text-center">
   <% jams.forEach(jam => { %>
+  <div class="container-fluid">
 
   <article class="jam-info col-md-4">
-    <p> Title: <%= jam.title %> </p>
+    <h3 class="page-header"><%= jam.title %> </p>
     <a href="/jams/<%= jam._id%>">Info</a>
     <p> City: <%= jam.city %> </p>
     <p> About: <%= jam.info %> </p>
@@ -19,12 +19,11 @@
     <form action="jams/<%= jam._id%>/delete" method="post">
       <button class="btn">Delete</button>
     </form>
-
     <a href="/jams/<%= jam._id%>/edit">Edit</a>
     </article>
   <% }) %>
   </div>
-  
+
   <div class="container-fluid">
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
