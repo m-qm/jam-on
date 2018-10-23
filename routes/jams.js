@@ -6,7 +6,7 @@ const router = express.Router();
 // const saltRounds = 10;
 
 router.get('/', (req, res, next) => {
-  res.render('jams/jam-index', { page: 'jams', menuId: 'add jam' });
+  res.render('jams/jamindex');
 });
 
 module.exports = router;
