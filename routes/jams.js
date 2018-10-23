@@ -9,16 +9,17 @@ const Jam = require('../models/jam');
 /* ------------ Jam Index ----------------- */
 
 router.get('/', (req, res, next) => {
-  //data = {};
   Jam.find()
     .then(jams => {
       const data = {
         jams: jams,
         page: 'jams',
         menuId: 'jams'
-      }
-      res.render('jams/index', jams);
-    });
+      };
+      res.render('jams/index', data);
+    })
+    .catch(next);
+});
 
 /* --------- Add a Jam ---------- */
 
@@ -42,17 +43,17 @@ router.post('/add', (req, res, next) => {
 
 /* --------- Delete a Jam ---------- */
 
-router.post('jams/:_id/delete', (req, res, next) => {
-  const id = req.params._id;
+router.post('/:id/delete', (req, res, next) => {
+  const id = req.params.id;
   Jam.findByIdAndDelete(id)
-  .then(() =>
-    res.redirect('/');  
-  })
-  .catch(error => {
-    const err = new Error ('Error connecting to database');
-    next(err);
-  })
-})
+    .then(() => {
+      res.redirect('/jams');
+    })
+    .catch(error => {
+      console.log('error', error);
+      next(error);
+    });
+});
 /* ----------- Edit Jam ------------ */
 
 module.exports = router;
