@@ -6,7 +6,7 @@ const middlewares = require('../middlewares/middlewares');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup', middlewares.requireAnon, (req, res, next) => {
   res.render('signup', { page: 'Sign up', menuId: 'signup' });
 });
 
@@ -48,7 +48,7 @@ router.post('/signup', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/login', (req, res, next) => {
+router.get('/login', middlewares.requireAnon, (req, res, next) => {
   res.render('login', { page: 'Login', menuId: 'login' });
 });
 
@@ -78,4 +78,8 @@ router.post('/login', (req, res, next) => {
     .catch(next);
 });
 
+router.post('/logout', middlewares.requireUser, (req, res, next) => {
+  delete req.session.currentUser;
+  res.redirect('/');
+});
 module.exports = router;
