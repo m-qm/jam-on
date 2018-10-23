@@ -10,10 +10,19 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li id="home"><a href="/">HOME</a></li>
+        <% if (!currentUser) { %>
         <li id="sign up"><a href="/auth/signup">SIGN UP</a></li>
         <li id="login"><a href=/auth/login>LOG IN</a></li>
-        <li id="jam"><a href="/jams">JAMS</a></li>
         <li id="contact"><a href="/contact">CONTACT US</a></li>
+        <% } else { %>
+        <li id="contact"><a href="/contact">CONTACT US</a></li>
+        <li id="jam"><a href="/jams">JAMS</a></li>
+        <form action="/auth/logout" method= "post">
+        <button>Logout</button>
+        </form>
+        
+        <% } %>
+        
       </ul>
     </div>
   </div>
