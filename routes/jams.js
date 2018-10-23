@@ -56,4 +56,29 @@ router.post('/:id/delete', (req, res, next) => {
 });
 /* ----------- Edit Jam ------------ */
 
+router.get('/:_id/edit', (req, res, next) => {
+  const id = req.params._id;
+  Jam.findById(id)
+    .then(jam => {
+      res.render('jams/edit', jam);
+    })
+    .catch(error => {
+      console.log('error', error);
+      next(error);
+    });
+});
+
+router.post('/:id/', (req, res, next) => {
+  const id = req.params.id;
+  const jam = req.body;
+  Jam.findByIdandUpdate(id, jam)
+    .then(jam => {
+      res.redirect('/jams');
+    })
+    .catch(error => {
+      console.log('error', error);
+      next(error);
+    });
+});
+
 module.exports = router;

@@ -7,7 +7,7 @@ html, body, header, #intro {
   height: 100%; 
 }
 a{
-  color: #red;
+  color: red;
 }
 .intro {
    background-image: url(images/intropic.png) no-repeat center center fixed;
