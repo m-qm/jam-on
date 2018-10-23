@@ -60,11 +60,11 @@ router.post('/:id/delete', (req, res, next) => {
 });
 /* ----------- Edit Jam ------------ */
 
-router.get('/:_id/edit', (req, res, next) => {
-  const id = req.params._id;
+router.get('/:id/edit', (req, res, next) => {
+  const id = req.params.id;
   Jam.findById(id)
     .then(jam => {
-      res.render('jams/edit', jam);
+      res.render('jams/edit', { jam: jam });
     })
     .catch(error => {
       console.log('error', error);
@@ -72,7 +72,21 @@ router.get('/:_id/edit', (req, res, next) => {
     });
 });
 
-router.post('/:id/', (req, res, next) => {
+router.post('/:id/save', middlewares.requireUser, (req, res, next) => {
+  const id = req.params.id;
+  const updateJam = req.body;
+  console.log(updateJam);
+  console.log(id);
+
+  Jam.findByIdAndUpdate(id, updateJam)
+    .then((jam) => {
+      console.log('estoy aqui');
+      res.redirect('/jams');
+    })
+    .catch(next);
+});
+
+router.post('/:id', (req, res, next) => {
   const id = req.params.id;
   const jam = req.body;
   Jam.findByIdandUpdate(id, jam)
