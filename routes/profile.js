@@ -8,9 +8,13 @@ const User = require('../models/user');
 // const saltRounds = 10;
 
 router.get('/', middlewares.requireUser, (req, res, next) => {
-  console.log('HOLAAAAAAAA');
-  console.log(res.locals.currentUser);
-  res.render('profile');
+  const { _id } = req.session.currentUser;
+  User.findById(_id)
+    .then(user => {
+      console.log(user);
+      res.render('profile', { user: user });
+    })
+    .catch(next);
 });
 
 router.get('/edit', middlewares.requireUser, (req, res, next) => {
@@ -23,14 +27,13 @@ router.get('/edit', middlewares.requireUser, (req, res, next) => {
 
 router.post('/save', middlewares.requireUser, (req, res, next) => {
   const updateUser = req.body;
-  const id = res.locals.currentUser._id;
-  console.log(res);
+  const id = req.session.currentUser._id;
   console.log(updateUser);
   console.log(id);
 
   User.findByIdAndUpdate(id, updateUser)
     .then((user) => {
-      res.render('profile', { user: user });
+      res.redirect('/profile');
     })
     .catch(next);
 });
