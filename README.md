@@ -118,7 +118,7 @@ Jam model
 
 ```
 owner: ObjectId<User>
-name: String
+title: String
 date: Date
 city: String
 description: String

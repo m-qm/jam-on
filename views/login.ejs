@@ -1,26 +1,25 @@
 
 
-<div class="container-fluid bg-3 text-center">    
-<h3><%= page %></h3><br>
-<div class="row">
-	<div class="col-sm-4">
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-		
+<div class="container-fluid bg-3">    
+	<h3><%= page %></h3>
+	<div class="row text-center">
+		<div class="col-sm-4">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			
+		</div>
+		<div class="col-sm-4"> 
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		</div>
+		<div class="col-sm-4"> 
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		</div>
 	</div>
-	<div class="col-sm-4"> 
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-	</div>
-	<div class="col-sm-4"> 
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-	</div>
-</div>
-</div>
-<form action="/auth/login" method="post">
-	<label for="username">Name</label>
-	<input type="text" id="username" name="username">
-	<label for="password">Password</label>
-	<input type="password" id="password" name="password">
-	<button type="submit">Login</button>
 
-</form>
+	<form action="/auth/login" method="post">
+		<label for="username" >Name</label>
+		<input type="text" id="username" name="username" class="form-control">
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password"  class="form-control">
+		<button type="submit" class="btn-block btn mt-3">Log in</button>
+	</form>	
 
