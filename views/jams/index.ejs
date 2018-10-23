@@ -1,46 +1,34 @@
 
 
 <div class="container-fluid bg-3 text-center">
-  <div class="row">
-    <div class="col-12">
-      <h3><%= page %></h3>
-    </div>
+  <h3><%= page %></h3>
   </div>
-  <div class="row text-center">
+  <div class="container text-center">
   <% jams.forEach(jam => { %>
+  <div class="row">
+
   <article class="jam-info col-md-4">
-    <h3 class="page-header"><%= jam.title %> </p>
+    <h3 class="page-header"><%= jam.title %> </h3>
     <p> City: <%= jam.city %> </p>
     <p> About: <%= jam.info %> </p>
     <p> Description: <%= jam.description %> </p>
     <p> Style: <%= jam.style %> </p>
     <p> Instruments: <%= jam.instruments %> </p>
-
-    <form action="jams/<%= result._id%>/favorites" method="post">
-    <button><i class="far fa-star"></i></button>
-    </form>
     
     <a href="/jams/<%= jam._id%>">Info</a>
     <form action="jams/<%= jam._id%>/delete" method="post">
       <button class="btn">Delete</button>
     </form>
+    <form action="" method="post">
+    <button class="btn"><i class="far fa-star"></i></button>
+  </form>
     <a href="/jams/<%= jam._id%>/edit">Edit</a>
     </article>
   <% }) %>
   </div>
 
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Active link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Unactive link</a></li>
-      </ul>
-    </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h1 class="page-header">Add new Article</h1>
-    </div>
+  <div class="row text-center">
+  <a class="btn btn-block" href="/jams/add" class="mt-2 btn btn-outline-secondary-block">Add a new Jam</a>
+  <a class="btn btn-block" href="/" class="mt-2 btn btn-outline-secondary-block">Go back</a>
   </div>
-  <div class="row">
-  <a class="btn" href="/jams/add" class="mt-2 btn btn-outline-secondary-block">Add a new Jam</a>
-  <a class="btn" href="/" class="mt-2 btn btn-outline-secondary-block">Go back</a>
-  </div>
+</div>

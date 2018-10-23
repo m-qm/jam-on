@@ -12,7 +12,7 @@ const middlewares = require('../middlewares/middlewares');
 
 /* ------------ Jam Index ----------------- */
 
-router.get('/', middlewares.requireUser, (req, res, next) => {
+router.get('/', (req, res, next) => {
   Jam.find()
     .then(jams => {
       const data = {
