@@ -15,11 +15,11 @@
       <%Jam.forEach(result => { %>
       <article class="Jam-info">
         <p> <%= result.name %> </p>
-        <a href="/jams/<%= result._id%>">Info</a>
-
         <form action="jams/<%= result._id%>/delete" method="post">
-          <button>Delete</button>
+        <button>Delete</button>
         </form>
+
+        <a href="/jams/<%= result._id%>">Info</a>
         <a href="/jams/<%= result._id%>/edit">Edit</a>
       <% }) %>
       </div>

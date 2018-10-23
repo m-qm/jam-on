@@ -1,6 +1,10 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Jam = require('../models/jam');
+const ObjectId = mongoose.Types.ObjectId;
+const middlewares = require('../middlewares/middlewares');
+
 // const mongoose = require('mongoose');
 // const User = require('../models/user');
 // const bcrypt = require('bcrypt');
@@ -8,7 +12,7 @@ const Jam = require('../models/jam');
 
 /* ------------ Jam Index ----------------- */
 
-router.get('/', (req, res, next) => {
+router.get('/', middlewares.requireUser, (req, res, next) => {
   Jam.find()
     .then(jams => {
       const data = {
@@ -79,6 +83,25 @@ router.post('/:id/', (req, res, next) => {
       console.log('error', error);
       next(error);
     });
+});
+
+/* ----------- Favorite Jam ------------ */
+
+router.post('/:id/favorites', middlewares.requireUser, (req, res, next) => {
+  const jamId = req.params.id;
+  const userId = req.session.currentUser._id;
+
+  Jam.findbyId(userId)
+    .then(user => {
+      user.favorites.push(ObjectId(jamId));
+      user.save()
+        .then((success) => {
+          req.flash('info', 'Añadido correctamente');
+          res.redirect('/jams');
+        })
+        .catch(next);
+    })
+    .catch(next);
 });
 
 module.exports = router;
