@@ -30,6 +30,12 @@ router.post('/signup', (req, res, next) => {
         const registerUser = {
           username: newUser.username,
           password: hashedPassword
+          // email: newUser.email,
+          // city: newUser.city,
+          // instrument: newUser.instrument,
+          // style: newUser.style,
+          // about: newUser.about
+
         };
         User.create(registerUser)
           .then(() => {

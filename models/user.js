@@ -5,9 +5,11 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  description: String,
-  style: String,
-  date: Date
+  city: String,
+  instrument: String,
+  styles: String,
+  about: String,
+  playlist: String
 });
 
 const User = mongoose.model('User', userSchema);
