@@ -1,6 +1,4 @@
-* {
-  
-}
+
 body{
   font-family: 'Bungee Hairline';
   font-weight: bold;
@@ -50,6 +48,8 @@ a.navbar-brand{
   font-family: 'Bungee';
   font-weight: bold;
 }
+
+
 
 /* Bootstrap */
 .navbar-nav, .navbar-nav a{
