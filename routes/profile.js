@@ -6,10 +6,9 @@ const User = require('../models/user');
 // const ObjectId = require('mongose').ObjectId;
 // const bcrypt = require('bcrypt');
 // const saltRounds = 10;
-
 router.get('/', middlewares.requireUser, (req, res, next) => {
-  const { _id } = req.session.currentUser;
-  User.findById(_id)
+  const id = req.session.currentUser._id;
+  User.findById(id)
     .then(user => {
       console.log(user);
       res.render('profile', { user: user });

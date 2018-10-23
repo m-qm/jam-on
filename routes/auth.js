@@ -38,9 +38,10 @@ router.post('/signup', (req, res, next) => {
 
         };
         User.create(registerUser)
-          .then(() => {
+          .then((result) => {
+            req.session.currentUser = result;
             req.flash('success', 'Correct Signup');
-            return res.redirect('/profile'); // cambiar nombre de ruta y vista
+            return res.redirect(`/profile/`); // cambiar nombre de ruta y vista
           })
           .catch(next);
       }
