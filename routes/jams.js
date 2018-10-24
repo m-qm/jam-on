@@ -4,6 +4,7 @@ const router = express.Router();
 const Jam = require('../models/jam');
 const ObjectId = mongoose.Types.ObjectId;
 const middlewares = require('../middlewares/middlewares');
+// const User = require('../models/user');
 
 // const mongoose = require('mongoose');
 // const User = require('../models/user');
@@ -45,19 +46,26 @@ router.post('/add', (req, res, next) => {
   }
 });
 
-/* --------- Delete a Jam ---------- */
+/* ----------- Atendees Jam ------------ */
 
-router.post('/:id/delete', (req, res, next) => {
-  const id = req.params.id;
-  Jam.findByIdAndDelete(id)
-    .then(() => {
-      res.redirect('/jams');
+router.post('/:id/attendees', (req, res, next) => {
+  const jamId = req.params.id;
+  const userId = req.session.currentUser._id;
+  // console.log(jamId, 'hey');
+  // console.log(userId, 'ho');
+  Jam.findById(jamId)
+    .then(jam => {
+      jam.attendees.push(ObjectId(userId));
+      jam.save()
+        .then((success) => {
+          req.flash('success', 'Saved to attendees');
+          res.redirect('/jams');
+        })
+        .catch(next);
     })
-    .catch(error => {
-      console.log('error', error);
-      next(error);
-    });
+    .catch(next);
 });
+
 /* ----------- Edit Jam ------------ */
 
 router.get('/:id/edit', (req, res, next) => {
@@ -99,6 +107,19 @@ router.post('/:id', (req, res, next) => {
     });
 });
 
+router.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  const jam = req.body;
+  Jam.findById(id, jam)
+    .then(jam => {
+      res.render('jams/jaminfo', { jam: jam });
+    })
+    .catch(error => {
+      console.log('error', error);
+      next(error);
+    });
+});
+
 /* ----------- Favorite Jam ------------ */
 
 router.post('/:id/favorites', middlewares.requireUser, (req, res, next) => {
@@ -116,6 +137,22 @@ router.post('/:id/favorites', middlewares.requireUser, (req, res, next) => {
         .catch(next);
     })
     .catch(next);
+});
+
+/* --------- Delete a Jam ---------- */
+
+router.post('/:id/delete', (req, res, next) => {
+  const id = req.params.id;
+  Jam.findByIdAndDelete(id)
+    .then(() => {
+      req.flash('info', 'Borrado correctamente');
+
+      res.redirect('/jams');
+    })
+    .catch(error => {
+      console.log('error', error);
+      next(error);
+    });
 });
 
 module.exports = router;

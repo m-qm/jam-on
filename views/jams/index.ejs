@@ -5,9 +5,8 @@
   </div>
   <div class="container text-center">
   <% jams.forEach(jam => { %>
-  <div class="row">
 
-  <article class="jam-info col-md-4">
+  <article class="jam-info container-fluid bg-3 text-center">    
     <h3 class="page-header"><%= jam.title %> </h3>
     <p> City: <%= jam.city %> </p>
     <p> About: <%= jam.info %> </p>
@@ -19,13 +18,12 @@
     <form action="jams/<%= jam._id%>/delete" method="post">
       <button class="btn">Delete</button>
     </form>
-    <form action="" method="post">
-    <button class="btn"><i class="far fa-star"></i></button>
+    <form action="jams/<%= jam._id%>/attendees" method="post">
+      <button type="submit" class="btn" ><i class="far fa-star"></i></button>
   </form>
     <a href="/jams/<%= jam._id%>/edit">Edit</a>
     </article>
   <% }) %>
-  </div>
 
   <div class="row text-center">
   <a class="btn btn-block" href="/jams/add" class="mt-2 btn btn-outline-secondary-block">Add a new Jam</a>
