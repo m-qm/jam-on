@@ -1,21 +1,21 @@
-<form action="/jams/add" method="post">
-<div class="container-fluid bg-3 text-center">    
+<form action="/jams/<%= jam._id %>/save" method="post">
+  <div class="container-fluid bg-3 text-center">   
+    <div class="form-container">
+      <label for="name">Title</label>
+      <input type="text" id="title" name="title" placeholder="Title your Jam" value="<%= jam.title %>" class="form-control">
+      <label for="date">Date</label>
+      <input type='date' name="date" class="form-control" id="datetimepicker4"/>
+      <label for="city">City</label>
+      <input type="text" name="city" placeholder="City" class="form-control">
+      <label for="description">Description</label>
+      <input type="text" name="description" placeholder="Description" class="form-control">
+      <label for="style">Style</label>
+      <input type="text" name="style" placeholder="Style" class="form-control">
+      <label for="instruments">Instruments</label>
+      <input type="text" name="instruments" placeholder="instruments" class="form-control">
 
-<div class="form-container">
-  <label for="name">Title</label>
-  <input type="text" id="name" name="title" placeholder="Title your Jam" class="form-control">
-  <label for="date">Date</label>
-  <input type='date' name="date" class="form-control" id='datetimepicker4' />
-  <label for="city">City</label>
-  <input type="text" name="city" placeholder="City" class="form-control">
-  <label for="description">Description</label>
-  <input type="text" name="description" placeholder="Description" class="form-control">
-  <label for="style">Style</label>
-  <input type="text" name="style" placeholder="Style" class="form-control">
-  <label for="instruments">Instruments</label>
-  <input type="text" name="instruments" placeholder="instruments" class="form-control">
-
-    <button>Save Jam</button>
+        <button type="submit" class="mt-2 btn btn-block">Save Jam</button>
+    </div>
   </div>
-  <a href="/jams" class="back-link">Go back</a>
+  <a href="/jams" class="btn btn-outline-secondary">Go back</a>
 </form>

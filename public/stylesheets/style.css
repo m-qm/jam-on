@@ -3,12 +3,17 @@ body{
   font-family: 'Bungee Hairline';
   font-weight: bold;
 }
+
+header:hover { background-color: yellow;
+}
 html, body, header, #intro {
   height: 100%; 
 }
+
 a{
-  color: red;
+  color:red;
 }
+
 .intro {
    background-image: url(images/intropic.png) no-repeat center center fixed;
  }
@@ -77,6 +82,10 @@ a.navbar-brand{
   border-bottom: 1px solid #e4e4e4;
   
 }
+.footer {
+  border-top: 1px solid #e4e4e4;
+}
+
 /* Bootstrap */
 .navbar-nav, .navbar-nav a{
   display: inline-block;
@@ -95,4 +104,18 @@ a.navbar-brand{
 }
 .active>a {
 color: #1abc9c !important;;
+}
+
+.logout-btn {
+  padding-top: 15px;
+  color: red;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+  background: none;
+  margin-left: -7px;
+
 }
