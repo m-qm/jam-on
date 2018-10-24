@@ -32,6 +32,7 @@ router.post('/save', middlewares.requireUser, (req, res, next) => {
 
   User.findByIdAndUpdate(id, updateUser)
     .then((user) => {
+      req.flash('success', 'Profile edited');
       res.redirect('/profile');
     })
     .catch(next);

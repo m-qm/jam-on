@@ -1,39 +1,29 @@
-<div class="container-fluid bg-3 text-center">    
-  <h3></h3><br>
+<div class="container bg-3">    
+  <h3>Profile edit</h3>
   
-  <div class="row">
-    <div class="col-sm-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <form action="/profile/save" method="post">
+      <label for="username">Name:</label>
+      <input type="text" id="username" name="username" value="<%= user.username%>"  class="form-control" readonly>
       
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-  </div>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" value="<%= user.email%>"class="form-control" placeholder="email" >
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" placeholder="City" value="<%= user.city %>" class="form-control">
+      
+      <label for="instrument">Instruments:</label>
+      <input type="text" id="instrument" name="instrument" placeholder="Instruments" value="<%= user.instrument%>" class="form-control">
+
+      <label for="styles">Styles:</label>
+      <input type="text" id="styles" name="styles" placeholder="Styles" value= "<%= user.styles%>" class="form-control">
+
+      <label for="about">About</label>
+      <input type="text" id="about" name="about" placeholder="About" value= "<%= user.about%>" class="form-control">
+      <div class="button-form">
+        <a class="button" href="/profile">go back</a>
+        <button type="submit">Save profile</button>
+      </div>
+
+  </form>
 </div>
-<form action="/profile/save" method="post">
-    <label for="username">Name:</label>
-    <input type="text" id="username" name="username" value="<%= currentUser.username%>"  class="form-control">
-    
-    <label for="email">E-mail:</label>
-    <input type="email" id="email" name="email" class="form-control" placeholder="email" value="<%= currentUser.email%>">
-
-    <label for="city">City:</label>
-    <input type="text" id="city" name="city" placeholder="City" value="<%= currentUser.city %>" class="form-control">
-    
-    <label for="instrument">Instruments:</label>
-    <input type="text" id="instrument" name="instrument" placeholder="Instruments" value="<%= currentUser.instrument%>" class="form-control">
-
-    <label for="styles">Styles:</label>
-    <input type="text" id="styles" name="styles" placeholder="Styles" value= "<%= currentUser.styles%>" class="form-control">
-
-    <label for="about">About</label>
-    <input type="text" id="about" name="about" placeholder="About" value= "<%= currentUser.about%>" class="form-control">
-
-    <button type="submit">Save profile</button>
-
-
-</form>

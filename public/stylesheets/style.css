@@ -49,8 +49,34 @@ a.navbar-brand{
   font-weight: bold;
 }
 
+.profile-info {
+  position: relative;
+  text-align: left; 
+  margin: 20px auto;
+}
+.profile-info-title {
+  position: relative; 
+  text-align: left;
+  margin-left: 150px;;
+}
+.form-control[readonly] {
+  background-color: white;
+  opacity: 1;
+}
+.button-form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
 
-
+.navbar {
+  background: #f8f9fa;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  border-bottom: 1px solid #e4e4e4;
+  
+}
 /* Bootstrap */
 .navbar-nav, .navbar-nav a{
   display: inline-block;
