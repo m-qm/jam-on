@@ -77,7 +77,6 @@ a.navbar-brand{
 .navbar {
   background: #f8f9fa;
   width: 100%;
-  position: fixed;
   z-index: 100;
   border-bottom: 1px solid #e4e4e4;
   
@@ -118,4 +117,21 @@ color: #1abc9c !important;;
   background: none;
   margin-left: -7px;
 
+}
+
+.jam-info {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+ 
+.fas.fa-star {
+  color: red
+}
+
+a.btn{
+  color: black;
+}
+
+.btn{
+  background:transparent;
 }
