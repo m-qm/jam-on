@@ -18,7 +18,18 @@ function requireAnon (req, res, next) {
   }
 }
 
+function isLogged (req, res, next) {
+  const user = req.session.currentUser;
+
+  if (user) {
+    return res.redirect('/jams');
+  } else {
+    next();
+  }
+}
+
 module.exports = {
   requireUser,
-  requireAnon
+  requireAnon,
+  isLogged
 };
