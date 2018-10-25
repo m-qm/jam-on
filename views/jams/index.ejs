@@ -1,18 +1,21 @@
 
 
 <div class="container bg-3 text-center">
-  <h3 class="mt-4"><%= page %></h3>
+  <h2 class="mt-4"><%= page %></h2>
   
   <div class="row text-center">
   <% jams.forEach(jam => { %>
 
   <article class="card jam-info bg-3 text-center col-md-4 pt-4 pb-4 mt-3">    
-    <h3 class="page-header"><%= jam.title %> </h3>
-    <p> City: <%= jam.city %> </p>
-    <p> About: <%= jam.info %> </p>
-    <p> Description: <%= jam.description %> </p>
-    <p> Style: <%= jam.style %> </p>
-    <p> Instruments: <%= jam.instruments %> </p>
+    <h3 class="page-header mb-4"><%= jam.title %> </h3>
+    <div class="jam-info">
+      <p> City: <%= jam.city %> </p>
+      <p> About: <%= jam.info %> </p>
+      <p> Description: <%= jam.description %> </p>
+      <p> Style: <%= jam.style %> </p>
+      <p> Instruments: <%= jam.instruments %> </p>
+      <p> Nº of Attendees: <%= jam.attendees.length %> </p>
+    </div>
     
     <div class="btn-wrapper d-flex justify-content-center">
       <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>"><i class="fas fa-info-circle"></i></a>

@@ -1,3 +1,4 @@
+
 <section class="user-profile">
 <div class="container-fluid bg-3 text-center">    
   <h3 class="profile-info-title">Profile</h3>
@@ -15,7 +16,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <a class="button mt-2 btn btn-outline-secondary-block" href="/profile/edit">Edit profile</a>      
+        <a class="button mt-2 btn btn-outline-secondary-block" href="/profile/edit"><i class="fas fa-pencil-alt"></i></a>      
       </div>
     </div>
   </div>
@@ -27,25 +28,29 @@
     <h3 class="profile-info-title">My jams</h3>
       <% if (jams.length > 0) { %> 
       <div class="row">
-        <div class="card-body">
-          <% jams.forEach((jamItem) => { %>
-            <div class="card">
+      <% jams.forEach((jamItem) => { %>
+      <div class="card jam-info bg-3 text-center col-md-4 pt-4 pb-4 mt-3 ml-3 mr-3">
               <div class="profile-info">
-                <h5 class="card-title">Jam: <%= jamItem.title %></h5>
-                <p class="card-text"> <%= jamItem.description %> </p>
-                <p class="card-text"> <%= jamItem.style %> </p>
-                <a href="/jams/<%= jamItem._id%>" class="mt-2 btn btn-outline-secondary-block">Detail </a>
+                <h4 class="page-header mb-4"><%= jamItem.title %></h5>
+                <p class="card-text">Description: <%= jamItem.description %> </p>
+                <p class="card-text">Style: <%= jamItem.style %> </p>
+                <p class="card-text ">Date: <%= jamItem.date %> </p>
+             <div class= "text-center">
+                <a class="btn mt-1 btn btn-outline-secondary-block text-center" href="/jams/<%= jamItem._id%>"><i class="fas fa-info-circle"></i></a>
+                <a class="button mt-2 btn btn-outline-secondary-block text-center" href="/jams/<%= jamItem._id%>/edit"><i class="fas fa-pencil-alt"></i></a>      
+                </div>
               </div>
             </div>
           <% }) %>
+
         
     
         </div>
       </div>
-      <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go Jam </a>
+      <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go to Jams </a>
       <% } else { %>
       
-        <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go Jam </a>
+        <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go to Jams </a>
       <% } %>
   </div>
 </section>

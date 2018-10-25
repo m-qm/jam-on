@@ -187,7 +187,7 @@ router.post('/:id/delete', middlewares.requireUser, (req, res, next) => {
   // console.log('user', idUser);
   Jam.findByIdAndDelete(id)
     .then(() => {
-      req.flash('info', 'Borrado correctamente');
+      req.flash('info', 'Deleted Successfully');
       res.redirect('/jams');
     })
     .catch(error => {

@@ -3,19 +3,19 @@
     <div class="form-container">
       <label for="name">Title</label>
       <input type="text" id="title" name="title" placeholder="Title your Jam" value="<%= jam.title %>" class="form-control">
-      <label for="date">Date</label>
-      <input type='date' name="date" class="form-control" id="datetimepicker4"/>
+      <label for="date" >Date</label>
+      <input type='date' name="date" class="form-control" id="datetimepicker4" value="<%= jam.date %>">
       <label for="city">City</label>
-      <input type="text" name="city" placeholder="City" class="form-control">
+      <input type="text" name="city" placeholder="City" class="form-control" value="<%= jam.city %>">
       <label for="description">Description</label>
-      <input type="text" name="description" placeholder="Description" class="form-control">
+      <input type="text" name="description" placeholder="Description" class="form-control" value="<%= jam.description %>">
       <label for="style">Style</label>
-      <input type="text" name="style" placeholder="Style" class="form-control">
+      <input type="text" name="style" placeholder="Style" class="form-control" value="<%= jam.style %>">
       <label for="instruments">Instruments</label>
-      <input type="text" name="instruments" placeholder="instruments" class="form-control">
+      <input type="text" name="instruments" placeholder="instruments" class="form-control" value="<%= jam.instruments %>">
 
-        <button type="submit" class="mt-2 btn btn-block">Save Jam</button>
-    </div>
+        <button type="submit" class="mt-2 btn btn-outline-secondary">Save Jam</button>
+        </div>
+        <a href="/jams" class="btn mt-2 btn-outline-secondary">Go back</a>
   </div>
-  <a href="/jams" class="btn btn-outline-secondary">Go back</a>
 </form>
