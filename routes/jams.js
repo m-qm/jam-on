@@ -12,17 +12,23 @@ const middlewares = require('../middlewares/middlewares');
 
 /* ------------ Jam Index ----------------- */
 
-router.get('/', (req, res, next) => {
+router.get('/', middlewares.requireUser, (req, res, next) => {
   const objId = mongoose.Types.ObjectId(req.session.currentUser._id);
   Jam.find()
     .then(jams => {
       for (let i = 0; i < jams.length; i++) {
+        if (jams[i].owner.equals(objId)) {
+          jams[i].isMyJam = true;
+        } else {
+          jams[i].isMyJam = false;
+        }
         for (let j = 0; j < jams[i].attendees.length; j++) {
           if (jams[i].attendees[j].equals(objId)) {
             jams[i].isAttending = true;
           } else {
             jams[i].isAttending = false;
           }
+          // oculta el boton de borrar si no es propietario + logica en la vista
         }
       }
       const data = {
@@ -30,7 +36,6 @@ router.get('/', (req, res, next) => {
         page: 'jams',
         menuId: 'jams',
         currentUser: req.session.currentUser
-        // isAttending: req.session.isAttending
       };
       res.render('jams/index', data);
     })
@@ -39,17 +44,19 @@ router.get('/', (req, res, next) => {
 
 /* --------- Add a Jam ---------- */
 
-router.get('/add', (req, res, next) => {
+router.get('/add', middlewares.requireUser, (req, res, next) => {
   res.render('jams/add', { page: 'jams', menuId: 'jams' });
 });
 
-router.post('/add', (req, res, next) => {
-  const newJam = req.body;
-  if (!newJam.title || !newJam.date || !newJam.city || !newJam.description || !newJam.style) {
+router.post('/add', middlewares.requireUser, (req, res, next) => {
+  const { title, date, description, city, instruments, style } = req.body;
+  const owner = req.session.currentUser._id;
+
+  if (!title || !date || !city || !description || !style) {
     return res.redirect('/jams/add');
-    // res.redirect('signup');
   } else {
-    Jam.create(newJam)
+    const jam = new Jam({ owner, title, date, description, city, instruments, style });
+    jam.save()
       .then(() => {
         return res.redirect('/jams');
       })
@@ -59,11 +66,9 @@ router.post('/add', (req, res, next) => {
 
 /* ----------- Atendees Jam ------------ */
 
-router.post('/:id/attend', (req, res, next) => {
+router.post('/:id/attend', middlewares.requireUser, (req, res, next) => {
   const jamId = req.params.id;
   const userId = req.session.currentUser._id;
-  // console.log(jamId, 'hey');
-  // console.log(userId, 'ho');
   Jam.findById(jamId)
     .then(jam => {
       const position = jam.attendees.indexOf(ObjectId(userId));
@@ -84,11 +89,9 @@ router.post('/:id/attend', (req, res, next) => {
     .catch(next);
 });
 
-router.post('/:id/attend', (req, res, next) => {
+router.post('/:id/attend', middlewares.requireUser, (req, res, next) => {
   const jamId = req.params.id;
   const userId = req.session.currentUser._id;
-  // console.log(jamId, 'hey');
-  // console.log(userId, 'ho');
   Jam.findById(jamId)
     .then(jam => {
       const position = jam.attendees.indexOf(ObjectId(userId));
@@ -113,14 +116,14 @@ router.post('/:id/attend', (req, res, next) => {
 
 /* ----------- Edit Jam ------------ */
 
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', middlewares.requireUser, (req, res, next) => {
   const id = req.params.id;
   Jam.findById(id)
     .then(jam => {
       res.render('jams/edit', { jam: jam });
     })
     .catch(error => {
-      console.log('error', error);
+      // console.log('error', error);
       next(error);
     });
 });
@@ -140,7 +143,7 @@ router.post('/:id/save', middlewares.requireUser, (req, res, next) => {
     .catch(next);
 });
 
-router.post('/:id', (req, res, next) => {
+router.post('/:id', middlewares.requireUser, (req, res, next) => {
   const id = req.params.id;
   const jam = req.body;
   Jam.findByIdandUpdate(id, jam)
@@ -155,8 +158,33 @@ router.post('/:id', (req, res, next) => {
 
 /* --------- Delete a Jam ---------- */
 
-router.post('/:id/delete', (req, res, next) => {
+// router.post('/:id/delete', middlewares.requireUser, (req, res, next) => {
+//   const idObjUser = mongoose.Types.ObjectId(res.session.currentUser._id);
+//   const id = req.params.id;
+//   Jam.findById(id)
+//     .then(jam => {
+//       const isOwner = jam.owner.indexOf(res.session.currentUser._id);
+//       console.log('isOwner', isOwner);
+//       if (isOwner >= 0) {
+//         Jam.findByIdAndDelete(id)
+//           .then(() => {
+//             req.flash('info', 'Borrado correctamente');
+//             res.redirect('/jams');
+//           })
+//           .catch(next);
+//       } else {
+//         req.flash('info', 'Borrado correctamente');
+//         res.redirect('/jams');
+//       }
+//     })
+//     .catch(next);
+// });
+
+router.post('/:id/delete', middlewares.requireUser, (req, res, next) => {
+  // const idUser = res.session.currentUser._id;
+
   const id = req.params.id;
+  // console.log('user', idUser);
   Jam.findByIdAndDelete(id)
     .then(() => {
       req.flash('info', 'Borrado correctamente');
@@ -168,7 +196,7 @@ router.post('/:id/delete', (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', middlewares.requireUser, (req, res, next) => {
   const id = req.params.id;
   const jam = req.body;
   Jam.findById(id, jam)
