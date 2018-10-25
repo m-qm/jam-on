@@ -1,17 +1,16 @@
 
 
-<div class="container-fluid bg-3">    
-	<h3><%= page %></h3>
+<div class="container-fluid bg-3 text-center">    
+<h3><%= page %></h3>
 	<div class="row text-center">
-		<div class="col-sm-4">
-			<p>Write here your username and password:</p>
-		</div>
+	</div>
+	<p>Write here your username and password:</p>
 		<form action="/auth/login" method="post">
 			<label for="username" >Name</label>
 			<input type="text" id="username" name="username" class="form-control">
 			<label for="password">Password</label>
 			<input type="password" id="password" name="password"  class="form-control">
-			<button type="submit" class="btn-block btn mt-3">Log in</button>
+			<button type="submit" class="btn btn-outline-secondary mt-2">Log in</button>
 		</form>	
 	</div>
 </div>

@@ -1,22 +1,36 @@
 
 <div class="container-fluid bg-3 text-center">    
+<h2> <%= jam.title %> </h2>
+<div class="card">
   <div class="row">
-    <div class="col-12">
-      <a href="/jam/:id/jaminfo"></a>
-      <p> <%= jam.title %> </p>
+  <div class="jam-info col-12 mx-3">
+  <a href="/jam/:id/jaminfo"></a>
+      
       <p> <%= jam.date %> </p>
       <p> <%= jam.city %> </p>
       <p> <%= jam.descritption %> </p>
       <p> <%= jam.style %> </p>
       <p> <%= jam.instruments %> </p>
-      <p> <%= jam.atendees %> </p>
+      <p>Nº of attendees : <%= jam.attendees.length %> </p>
 
+      </div>
     </div>
 
   </div>
+     
+  <div class="btn-wrapper d-flex justify-content-center">
+    <form action="jams/<%= jam._id%>/delete" method="post">
+      <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button>
+     
+    </form>
+
+    <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
+
+    </div>
+
+
   <div class="my-jams">
-  <a class="btn btn-outline-secondary" href="/jams/add" class="mt-2 btn btn-outline-secondary-block">Add a new Jam</a>
-  <a class="btn btn-outline-secondary" href="javascript:window.history.back()" class="mt-2 btn btn-outline-secondary-block">Go back</a>
+  <a class="btn mt-5 btn-outline-secondary" href="javascript:window.history.back()" class="mt-2 btn btn-outline-secondary-block">Go back</a>
  
   
   </div>

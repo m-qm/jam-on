@@ -159,7 +159,7 @@ router.post('/:id/delete', (req, res, next) => {
   const id = req.params.id;
   Jam.findByIdAndDelete(id)
     .then(() => {
-      req.flash('info', 'Borrado correctamente');
+      req.flash('info', 'Deleted Successfully');
       res.redirect('/jams');
     })
     .catch(error => {

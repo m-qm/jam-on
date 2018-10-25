@@ -1,21 +1,17 @@
 
 
 <div class="container-fluid bg-3 text-center">    
-  <h3></h3><br>
-  
-  <div class="row">
-    
-    <div class="col-sm-4"> 
-      <h2 class="title">Jam-On</h2>
-      <p>Jam-On is an app that connects musicians that share common interests and styles to jam together</p>
-    </div>
+<h3><%= page %></h3>
+
+  <div class="row text-center">
+    <p>Jam-On is an app that connects musicians that share common interests and styles to jam together</p>
   </div>
   <form action="/auth/signup" method="post">
-  <label for="username" >Name</label>
-  <input type="text" id="username" name="username" class="form-control">
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password"  class="form-control">
-      <button type="submit" class="mt-2 btn btn-block">Sign up</button>
+    <label for="username" >Name</label>
+    <input type="text" id="username" name="username" class="form-control">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password"  class="form-control">
+    <button type="submit" class="btn btn-outline-secondary mt-2">Sign up</button>
   </form>
 </div>
 
