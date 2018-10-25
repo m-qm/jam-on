@@ -66,6 +66,33 @@ router.post('/:id/attendees', (req, res, next) => {
     .catch(next);
 });
 
+router.post('/:id/attend', (req, res, next) => {
+  const jamId = req.params.id;
+  const userId = req.session.currentUser._id;
+  // console.log(jamId, 'hey');
+  // console.log(userId, 'ho');
+  Jam.findById(jamId)
+    .then(jam => {
+      const position = jam.attendees.indexOf(ObjectId(userId));
+      let isAttending = false;
+      if (position < 0) {
+        jam.attendees.push(ObjectId(userId));
+        req.flash('success', 'Added to attendees');
+        isAttending = true;
+      } else {
+        jam.attendees.splice(position, 1);
+        req.flash('danger', 'Removed from attendees');
+        isAttending = false;
+      }
+      jam.save()
+        .then((success) => {
+          res.redirect('/jams');
+        })
+        .catch(next);
+    })
+    .catch(next);
+});
+
 /* ----------- Edit Jam ------------ */
 
 router.get('/:id/edit', (req, res, next) => {
