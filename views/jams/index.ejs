@@ -1,12 +1,12 @@
 
 
-<div class="container-fluid bg-3 text-center">
-  <h3><%= page %></h3>
-  </div>
-  <div class="container text-center">
+<div class="container bg-3 text-center">
+  <h3 class="mt-4"><%= page %></h3>
+  
+  <div class="row text-center">
   <% jams.forEach(jam => { %>
 
-  <article class="jam-info container-fluid bg-3 text-center">    
+  <article class="card jam-info bg-3 text-center col-md-4 pt-4 pb-4 mt-3">    
     <h3 class="page-header"><%= jam.title %> </h3>
     <p> City: <%= jam.city %> </p>
     <p> About: <%= jam.info %> </p>
@@ -14,19 +14,32 @@
     <p> Style: <%= jam.style %> </p>
     <p> Instruments: <%= jam.instruments %> </p>
     
-    <a href="/jams/<%= jam._id%>">Info</a>
+  <div class="btn-wrapper d-flex justify-content-center">
+    <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>"><i class="fas fa-info-circle"></i></a>
     <form action="jams/<%= jam._id%>/delete" method="post">
-      <button class="btn">Delete</button>
+      <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button>
+     
     </form>
-    <form action="jams/<%= jam._id%>/attendees" method="post">
-      <button type="submit" class="btn" ><i class="far fa-star"></i></button>
-  </form>
-    <a href="/jams/<%= jam._id%>/edit">Edit</a>
+
+    <% if(jam.isAttending){ %>
+    <form action="jams/<%= jam._id%>/attend" method="post">
+      <button type="submit" class="btn ml-1 mr-1" ><i class="fas fa-star"></i></button>
+    </form>
+    <% } else { %>
+    <form action="jams/<%= jam._id%>/attend" method="post">
+      <button type="submit" class="btn ml-1 mr-1" ><i class="far fa-star"></i></button>
+    </form>
+    <% } %>
+    <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
+
+    </div>
     </article>
   <% }) %>
+  </div>
 
   <div class="row text-center">
-  <a class="btn btn-block" href="/jams/add" class="mt-2 btn btn-outline-secondary-block">Add a new Jam</a>
-  <a class="btn btn-block" href="/" class="mt-2 btn btn-outline-secondary-block">Go back</a>
+  <a href="/jams/add" class="mt-5 btn-outline btn-block">Add a new Jam</a>
+  <a href="/" class="mt-2 btn-outline btn-block">Go back</a>
   </div>
+
 </div>
