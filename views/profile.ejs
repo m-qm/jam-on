@@ -1,33 +1,56 @@
 <section class="user-profile">
 <div class="container-fluid bg-3 text-center">    
   <h3 class="profile-info-title">Profile</h3>
-  <div class="row">
-    <div class="profile-info">
+  <div class="card">
+    <div class="row">
+      <div class="profile-info">
+        <p> Usuario: <%= user.username %> </p>
+        <p> E-Mail: <%= user.email %> </p>
+        <p> City: <%= user.city %> </p>
+        <p> Instrument: <%= user.instrument %> </p>
+        <p> Styles: <%= user.styles %> </p>
+        <p> About: <%= user.about %> </p>
+      </div>
 
-      
-      <p> Usuario: <%= user.username %> </p>
-      <p> E-Mail: <%= user.email %> </p>
-      <p> City: <%= user.city %> </p>
-      <p> Instrument: <%= user.instrument %> </p>
-      <p> Styles: <%= user.styles %> </p>
-      <p> About: <%= user.about %> </p>
     </div>
-
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <a class="button" href="/profile/edit">Edit profile</a>
+    <div class="row">
+      <div class="col">
+        <a class="button mt-2 btn btn-outline-secondary-block" href="/profile/edit">Edit profile</a>      
+      </div>
     </div>
   </div>
-
 </section>
+
 <section class="my-jams">
   <div class="container-fluid bg-3 text-center">
-    <h3 class="profile-info-title"> My Jams</h3>
-    <div class="row">
-
-    </div>
-  
+    
+    <h3 class="profile-info-title">My jams</h3>
+      <% if (jams.length > 0) { %> 
+      <div class="row">
+        <div class="card-body">
+          <% jams.forEach((jamItem) => { %>
+            <div class="card">
+              <div class="profile-info">
+                <h5 class="card-title">Jam: <%= jamItem.title %></h5>
+                <p class="card-text"> <%= jamItem.description %> </p>
+                <p class="card-text"> <%= jamItem.style %> </p>
+                <a href="/jams/<%= jamItem._id%>" class="mt-2 btn btn-outline-secondary-block">Detail </a>
+              </div>
+            </div>
+          <% }) %>
+        
+    
+        </div>
+      </div>
+      <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go Jam </a>
+      <% } else { %>
+      
+        <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go Jam </a>
+      <% } %>
   </div>
+</section>
 
+
+<section class="followers">
+  <!-- Back log -->
 </section>
