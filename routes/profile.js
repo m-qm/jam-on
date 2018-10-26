@@ -10,7 +10,7 @@ const Jams = require('../models/jam');
 
 router.get('/', middlewares.requireUser, (req, res, next) => {
   const id = req.session.currentUser._id;
-  var idObj = mongoose.Types.ObjectId(id);
+  let idObj = mongoose.Types.ObjectId(id);
   User.findById(id)
     .then(user => {
       Jams.find({ attendees: idObj })
