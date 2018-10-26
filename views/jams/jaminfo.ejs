@@ -1,12 +1,12 @@
 
 <div class="container-fluid bg-3 text-center">    
-<h2> <%= jam.title %> </h2>
 <div class="card">
-  <div class="row">
-  <div class="jam-info col-12 mx-3">
+<div class="row">
+<div class="jam-info col-12 mx-3">
+<h3 class="page-header mb-4 text-center"><%= jam.title %> </h3>
   <a href="/jam/:id/jaminfo"></a>
       
-      <p> <%= jam.date %> </p>
+      <p> <%= moment(jam.date).format( 'DD-MMM-YYYY') %> </p>
       <p> <%= jam.city %> </p>
       <p> <%= jam.descritption %> </p>
       <p> <%= jam.style %> </p>
@@ -15,18 +15,15 @@
 
       </div>
     </div>
-
+    <div class="btn-wrapper d-flex justify-content-center">
+      <form action="jams/<%= jam._id%>/delete" method="post">
+        <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button>
+      </form>
+      <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
+    </div>
   </div>
      
-  <div class="btn-wrapper d-flex justify-content-center">
-    <form action="jams/<%= jam._id%>/delete" method="post">
-      <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button>
-     
-    </form>
-
-    <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
-
-    </div>
+ 
 
 
   <div class="my-jams">

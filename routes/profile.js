@@ -34,7 +34,6 @@ router.get('/', middlewares.requireUser, (req, res, next) => {
 router.get('/edit', middlewares.requireUser, (req, res, next) => {
   User.findById(res.locals.currentUser._id)
     .then((user) => {
-      console.log(user);
       res.render('profileedit', { user: user });
     });
 });
@@ -42,8 +41,6 @@ router.get('/edit', middlewares.requireUser, (req, res, next) => {
 router.post('/save', middlewares.requireUser, (req, res, next) => {
   const updateUser = req.body;
   const id = req.session.currentUser._id;
-  console.log(updateUser);
-  console.log(id);
 
   User.findByIdAndUpdate(id, updateUser)
     .then((user) => {

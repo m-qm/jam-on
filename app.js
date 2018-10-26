@@ -1,4 +1,5 @@
 require('dotenv').config();
+const moment = require('moment');
 // const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -59,7 +60,7 @@ app.use(flash());
 app.use((req, res, next) => {
   app.locals.currentUser = req.session.currentUser;
   res.locals.currentUser = req.session.currentUser;
-
+  app.locals.moment = moment;
   next();
 });
 

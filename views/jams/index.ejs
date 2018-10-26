@@ -3,7 +3,7 @@
 <div class="container bg-3 text-center">
   <h2 class="mt-4"><%= page %></h2>
   
-  <div class="row text-center">
+  <div class="row text-center justify-content-center">
   <% jams.forEach(jam => { %>
 
   <article class="card jam-info bg-3 text-center col-md-4 pt-4 pb-4 mt-3">    
@@ -40,9 +40,9 @@
   <% }) %>
   </div>
 
-  <div class="row text-center">
-  <a href="/jams/add" class="mt-5 btn-outline btn-block">Add a new Jam</a>
-  <a href="/" class="mt-2 btn-outline btn-block">Go back</a>
+  <div class="text-center">
+    <a href="/jams/add" class="mt-2 btn btn-outline-secondary btn-outline-block btn-secondary-block">Add a new Jam</a>
+    <a href="/" class="mt-2 btn btn-outline-secondary btn-outline-secondary-block">Go back</a>
   </div>
 
 </div>

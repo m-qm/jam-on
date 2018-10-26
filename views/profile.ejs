@@ -34,7 +34,7 @@
                 <h4 class="page-header mb-4"><%= jamItem.title %></h5>
                 <p class="card-text">Description: <%= jamItem.description %> </p>
                 <p class="card-text">Style: <%= jamItem.style %> </p>
-                <p class="card-text ">Date: <%= jamItem.date %> </p>
+                <p class="card-text ">Date: <%=  moment(jamItem.date).format( 'DD-MMM-YYYY') %> </p>
              <div class= "text-center">
                 <a class="btn mt-1 btn btn-outline-secondary-block text-center" href="/jams/<%= jamItem._id%>"><i class="fas fa-info-circle"></i></a>
                 <a class="button mt-2 btn btn-outline-secondary-block text-center" href="/jams/<%= jamItem._id%>/edit"><i class="fas fa-pencil-alt"></i></a>      
@@ -42,16 +42,16 @@
               </div>
             </div>
           <% }) %>
-
-        
-    
         </div>
-      </div>
-      <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go to Jams </a>
+      </div>  
+      <div class="text-center"> 
+        <a href="/jams" class="mt-2 btn btn-outline-secondary btn-outline-secondary-block">Go to Jams </a>
+      </div>  
       <% } else { %>
-      
-        <a href="/jams" class="mt-2 btn btn-outline-secondary-block">Go to Jams </a>
+      <div class="text-center">
+        <a href="/jams" class="mt-2 btn btn-outline-secondary btn-outline-secondary-block">Go to Jams </a>
       <% } %>
+      </div>
   </div>
 </section>
 
