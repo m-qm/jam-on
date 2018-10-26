@@ -16,14 +16,14 @@ router.get('/', middlewares.requireUser, (req, res, next) => {
       Jams.find({ attendees: idObj })
         .then((results) => {
           if (!results) {
-            console.log(results);
+            // console.log(results);
             return res.render('profile', { user: user });
           } else {
             const data = {
               user,
               jams: results
             };
-            console.log('hay usuario y jam', results);
+            // console.log('hay usuario y jam', results);
             return res.render('profile', data);
           }
         });

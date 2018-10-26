@@ -133,8 +133,8 @@ router.get('/:id/edit', middlewares.requireUser, (req, res, next) => {
 router.post('/:id/save', middlewares.requireUser, (req, res, next) => {
   const id = req.params.id;
   const updateJam = req.body;
-  console.log(updateJam);
-  console.log(id);
+  // console.log(updateJam);
+  // console.log(id);
 
   Jam.findByIdAndUpdate(id, updateJam)
     .then((jam) => {

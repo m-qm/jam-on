@@ -1,9 +1,10 @@
 
 <div class="container-fluid bg-3 text-center">    
   <div class="card">
-    <div class="row col-12 mx-3">
+    <div class="row col-12 mx-3 justify-content-center">
       <div class="jam-info ">
         <h3 class="page-header mt-3 mb-3 text-center"><%= jam.title %> </h3>
+        
         <a href="/jam/:id/jaminfo"></a>
             
         <p> <%= moment(jam.date).format( 'DD-MMM-YYYY') %> </p>
@@ -11,7 +12,7 @@
         <p> <%= jam.descritption %> </p>
         <p> <%= jam.style %> </p>
         <p> <%= jam.instruments %> </p>
-        <p>Nº of attendees : <%= jam.attendees.length %> </p>
+        <p> Nº of attendees : <%= jam.attendees.length %> </p>
 
       </div>
     </div>

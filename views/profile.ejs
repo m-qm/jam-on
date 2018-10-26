@@ -1,6 +1,7 @@
 
 <section class="user-profile">
-<div class="container-fluid bg-3 text-center">    
+<div class="container-fluid bg-3 text-center">   
+ 
   <h3 class="profile-info-title">Profile</h3>
   <div class="card">
     <div class="row">
@@ -35,10 +36,10 @@
                 <p class="card-text">Description: <%= jamItem.description %> </p>
                 <p class="card-text">Style: <%= jamItem.style %> </p>
                 <p class="card-text ">Date: <%=  moment(jamItem.date).format( 'DD-MMM-YYYY') %> </p>
-             <div class= "text-center">
+              <div class= "text-center">
                 <a class="btn mt-1 btn btn-outline-secondary-block text-center" href="/jams/<%= jamItem._id%>"><i class="fas fa-info-circle"></i></a>
                 <a class="button mt-2 btn btn-outline-secondary-block text-center" href="/jams/<%= jamItem._id%>/edit"><i class="fas fa-pencil-alt"></i></a>      
-                </div>
+              </div>
               </div>
             </div>
           <% }) %>
