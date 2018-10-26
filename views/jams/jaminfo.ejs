@@ -1,36 +1,30 @@
 
 <div class="container-fluid bg-3 text-center">    
-<div class="card">
-<div class="row">
-<div class="jam-info col-12 mx-3">
-<h3 class="page-header mb-4 text-center"><%= jam.title %> </h3>
-  <a href="/jam/:id/jaminfo"></a>
-      
-      <p> <%= moment(jam.date).format( 'DD-MMM-YYYY') %> </p>
-      <p> <%= jam.city %> </p>
-      <p> <%= jam.descritption %> </p>
-      <p> <%= jam.style %> </p>
-      <p> <%= jam.instruments %> </p>
-      <p>Nº of attendees : <%= jam.attendees.length %> </p>
+  <div class="card">
+    <div class="row col-12 mx-3">
+      <div class="jam-info ">
+        <h3 class="page-header mt-3 mb-3 text-center"><%= jam.title %> </h3>
+        <a href="/jam/:id/jaminfo"></a>
+            
+        <p> <%= moment(jam.date).format( 'DD-MMM-YYYY') %> </p>
+        <p> <%= jam.city %> </p>
+        <p> <%= jam.descritption %> </p>
+        <p> <%= jam.style %> </p>
+        <p> <%= jam.instruments %> </p>
+        <p>Nº of attendees : <%= jam.attendees.length %> </p>
 
       </div>
     </div>
 
-  <div class="btn-wrapper d-flex justify-content-center">
-   
-    <form action="/jams/<%= jam._id%>/delete" method="post">
-      <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button>
-     
-    </form>
-   
-    <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
-
+    <div class="btn-wrapper d-flex justify-content-center">
+          
+      <form action="/jams/<%= jam._id%>/delete" method="post">
+        <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button> 
+      </form>  
+      <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
     </div>
-
-
-  <div class="my-jams">
-  <a class="btn mt-5 btn-outline-secondary" href="javascript:window.history.back()" class="mt-2 btn btn-outline-secondary-block">Go back</a>
- 
-  
-  </div>
+    <div class="my-jams">
+    </div>
+    </div>
+    <a class="btn mt-5 btn-outline-secondary" href="javascript:window.history.back()" class="mt-2 btn btn-outline-secondary-block">Go back</a>
 </div>
