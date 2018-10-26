@@ -15,15 +15,17 @@
 
       </div>
     </div>
-    <div class="btn-wrapper d-flex justify-content-center">
-      <form action="jams/<%= jam._id%>/delete" method="post">
-        <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button>
-      </form>
-      <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
-    </div>
-  </div>
+
+  <div class="btn-wrapper d-flex justify-content-center">
+   
+    <form action="/jams/<%= jam._id%>/delete" method="post">
+      <button class="btn ml-1 mr-1"><i class="far fa-trash-alt"></i></button>
      
- 
+    </form>
+   
+    <a class="btn ml-1 mr-1" href="/jams/<%= jam._id%>/edit"><i class="fas fa-pencil-alt"></i></a>
+
+    </div>
 
 
   <div class="my-jams">
