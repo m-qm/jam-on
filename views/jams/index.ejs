@@ -9,7 +9,7 @@
     <h3 class="page-header mb-4"><%= jam.title %> </h3>
     <div class="jam-info">
       <p> City: <%= jam.city %> </p>
-      <p> Date: <%= jam.date %> </p>
+      <p> Date: <%= moment(jam.date).format( 'DD-MMM-YYYY') %> </p>
       <p> Description: <%= jam.description %> </p>
       <p> Style: <%= jam.style %> </p>
       <p> Instruments: <%= jam.instruments %> </p>
