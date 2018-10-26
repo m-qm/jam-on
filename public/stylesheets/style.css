@@ -100,7 +100,7 @@ color: #1abc9c !important;;
 }
 
 .logout-btn {
-  padding-top: 15px;
+  padding-top: 13px;
   color: red;
   padding-bottom: 15px;
   border: 0;
@@ -110,6 +110,9 @@ color: #1abc9c !important;;
   letter-spacing: 5px;
   background: none;
   margin-left: -7px;
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 7px;
 
 }
 
@@ -133,6 +136,7 @@ a.btn{
 .btn{
   background:transparent;
   justify-content: center;
+
 }
 
 i.far {
